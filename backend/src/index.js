@@ -4,7 +4,7 @@ const cors    = require('cors');
 const helmet  = require('helmet');
 const rateLimit = require('express-rate-limit');
 const routes  = require('./routes');
-
+const path = require('path');
 const app = express();
   
 // Trust proxy for correct client IP detection
