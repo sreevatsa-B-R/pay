@@ -33,6 +33,12 @@ app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
 // 404
 app.use((req, res) => res.status(404).json({ error: 'Route not found' }));
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+// SPA fallback 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
